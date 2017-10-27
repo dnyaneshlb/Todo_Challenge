@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="Todo">
+	<head>
+		<title>Hello World</title>
+		<link rel="stylesheet" href="css/topcoat-desktop-dark.css"/>
+		<link rel="stylesheet" href="css/app.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/todocontroller.js"></script>
+        <script type="text/javascript" src="js/todoItemDirective.js"></script>
+        
+	</head>
+	<body ng-controller="todoController as todo">
+        <input type="text" placeholder="what's on your todo list?" class="form-control" ng-model="title">
+        <input type="text" placeholder="add more details...." class="form-control" ng-model="description">
+        <input type="date" ng-model="date">
+        <input type="button" value="Add" ng-click="todo.addItem(event)" class="btn btn-primary">
+        <hr>
+        
+        <div ng-show="todo.todoSortedTodoList.todayItems.length>0">
+        <h3>Today's Todos...</h3>
+            <div ng-repeat="item in todo.todoSortedTodoList.todayItems">
+                <todo-item></todo-item>
+            </div>
+        </div>
+        <hr>
+        
+        <div ng-show="todo.todoSortedTodoList.tommorowItems.length>0">
+        <h3>Tomorrow's Todos...</h3>
+            <div ng-repeat="item in todo.todoSortedTodoList.tommorowItems">
+                <todo-item></todo-item>
+            </div>
+        </div>
+        <hr>
+        
+        <!--<h3>Completed things.</h3>-->
+        
+        <div ng-show="todo.todoList.length ==0" class="empty-todo-list">
+            <h2>Alas...!! Nothing on your list</h2>
+        </div>
+        
+	</body>
+</html>

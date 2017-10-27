@@ -1,0 +1,36 @@
+.thingtodo{
+
+}
+
+.trashcan{
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.strikedthroughtext{
+	text-decoration: line-through;	
+}
+
+input.ng-invalid {
+    background-color: pink;
+}
+
+
+input.ng-valid {
+    background-color: lightgreen;
+}
+
+.closebtn {
+    position: absolute;
+    right: 5px;
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+.empty-todo-list {
+    color : coral;
+    font-size: 200%;   
+    vertical-align: middle;
+    margin-left: 30%;
+}
