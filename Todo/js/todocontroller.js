@@ -59,3 +59,24 @@
         
     }]);
 })();
+
+
+
+/*
+var dateOne = new Date(2010, 00, 15); //Year, Month, Date
+ var dateTwo = new Date(2010, 00, 15); //Year, Month, Date
+ 
+ 
+if (dateOne > dateTwo) 
+{
+  alert("Date One is greather then Date Two.");
+}
+else if(dateTwo > dateOne)
+{
+  alert("Date Two is greather then Date One.");
+}
+else {
+ alert("same Dates");
+}
+
+*/
