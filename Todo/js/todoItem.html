@@ -1,11 +1,9 @@
 
 <div class="card">
     <div class="closebtn">
-        
-        <input type="checkbox">
-            
-        <a href="javascript:void(0)">&times;</a>
-        <img src="../Todo/res/trash.png" style="width:20px;height: 20px" ng-click="todo.deleteItem($index)" title="delete item">
+        <input type="checkbox" ng-change="todo.markComplete($index, item)" ng-model="item.isCompleted">
+        <img src="../Todo/res/trash.png" style="width:20px;height: 20px" ng-click="todo.deleteItem($index, item)"
+             title="delete item">
     </div>
   <div class="card-body">
     <h6 class="card-title">{{item.title}}

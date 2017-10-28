@@ -1,8 +1,5 @@
 (function(){
 
-	var todoApp = angular.module('Todo',[]);
-    
-    
     /*
         I dont want to consider time for date
     */
@@ -16,4 +13,6 @@
         this.setHours(0, 0, 0, 0);
     }
 
+	var todoApp = angular.module('Todo',[]);
+    
 })();
