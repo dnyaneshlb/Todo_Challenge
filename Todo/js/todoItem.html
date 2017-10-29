@@ -2,13 +2,21 @@
 <div class="card">
     <div class="closebtn">
         <input type="checkbox" ng-change="todo.markComplete($index, item)" ng-model="item.isCompleted">
-        <img src="../Todo/res/trash.png" style="width:20px;height: 20px" ng-click="todo.deleteItem($index, item)"
+        <img id="editItem" class="editItem" ng-src="../Todo/res/{{todo.editIcon}}" style="width:20px;height: 20px" 
+             ng-click="todo.editItem($index,item)" title="edit item">
+        <img ng-src="../Todo/res/trash.png" style="width:20px;height: 20px" ng-click="todo.deleteItem($index, item)"
              title="delete item">
     </div>
-  <div class="card-body">
-    <h6 class="card-title">{{item.title}}
-        
-    </h6>
-    <p class="card-text">{{item.description}}</p>
-  </div>
+    <div class="card-body" ng-hide="item.editMode === true">
+        <h6 class="card-title">{{item.title}}
+
+        </h6>
+        <p class="card-text">{{item.description}}</p>
+    </div>
+    
+    <div class="item-edit" ng-show="item.editMode === true">
+        <input type="text" placeholder="what's on your todo list?" class="form-control" 
+               ng-model="item.title">
+        <input type="text" placeholder="add more details...." class="form-control" ng-model="item.description">
+    </div>
 </div>

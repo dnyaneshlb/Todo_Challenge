@@ -1,3 +1,23 @@
+body{
+    background: #555;
+}
+
+img {
+    cursor: pointer;
+}
+
+.content {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.todo-section-heading {
+    font-size: 20px;
+}
+
 .thingtodo{
 
 }
@@ -33,4 +53,13 @@ input.ng-valid {
     font-size: 200%;   
     vertical-align: middle;
     margin-left: 30%;
+}
+
+.completed-item {
+    background-color: grey;
+    text-decoration: line-through;
+}
+
+.item-edit {
+    margin: 20px 10px 10px 10px;
 }

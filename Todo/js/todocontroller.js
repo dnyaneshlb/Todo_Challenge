@@ -13,11 +13,30 @@
                                       false)];
         
         this.doneList = [];
+        this.editIcon = "edit.png";
         
+        /*
+            Add completed task back to todo list.
+        */
         this.addBack = function (item){
             this.addItem(item);
         }
         
+        /*
+            Edit a todo item.
+        */
+        this.editItem = function(index, item){
+            
+            
+            item.editMode = !item.editMode;  
+            this.editIcon = this.editIcon === "save.png" ? "edit.png" : "save.png";
+            
+            
+        }
+        
+        /*
+            Add item in todo list
+        */
         this.addItem = function(item){
             
             if(!item){
@@ -85,19 +104,28 @@
         */
         this.deleteItem = function(index, item){
             
-            findTodoItem(this.todoSortedTodoList.laterThisYearItems,item);
-            findTodoItem(this.todoSortedTodoList.laterThisMonthitems,item);
-            findTodoItem(this.todoSortedTodoList.laterThisWeekItems,item);
-            findTodoItem(this.todoSortedTodoList.tommorowItems,item);
-            findTodoItem(this.todoSortedTodoList.todayItems,item);
+            if(item.isCompleted){
+                removeItem(this.doneList,item);    
+            }
+            else{
+                removeItem(this.todoSortedTodoList.laterThisYearItems,item);
+                removeItem(this.todoSortedTodoList.laterThisMonthitems,item);
+                removeItem(this.todoSortedTodoList.laterThisWeekItems,item);
+                removeItem(this.todoSortedTodoList.tommorowItems,item);
+                removeItem(this.todoSortedTodoList.todayItems,item);
+            }
+            
         }
         
-        
+        /*
+            Mark task as complete.
+        */
         this.markComplete = function(index, item){
             if(item.isCompleted){
-                item.isCompleted = true;
                 this.doneList.push(item);
+                item.isCompleted = false;
                 this.deleteItem(index, item);
+                item.isCompleted = true;
             }
             else{
                 this.doneList.splice(index, 1);
@@ -106,7 +134,8 @@
         }
         
         
-        function findTodoItem (list,todoItem)
+        
+        function removeItem (list,todoItem)
         {
             if(list.length > 0){
                 var ss = $filter('filter')(list, todoItem); 
@@ -137,12 +166,15 @@
         }
         
         
-        /*A class denoting an item in todo list*/
-        function TodoItem(title, description, date, isCompleted){
+        /*
+            A class denoting an item in todo list
+        */
+        function TodoItem(title, description, date, isCompleted, editMode){
             this.title = title;
             this.description = description;
             this.date = date;
             this.isCompleted = isCompleted;
+            this.editMode = editMode;
         };
         
     }]);
