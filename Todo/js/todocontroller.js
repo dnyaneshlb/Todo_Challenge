@@ -10,10 +10,18 @@
         this.todoSortedTodoList.laterThisYearItems = [new TodoItem("Add Something in List",
                                       "Some quick example text to build on the card title and make up the bulk of the card's content.",
                                       new Date().withoutTime(),
-                                      false)];
+                                      false,false),
+                                                     new TodoItem("Test Todo Item",
+                                      "Some random test text",
+                                      new Date().withoutTime(),
+                                      false,false),
+                                                     new TodoItem("Greet Happy Birthday",
+                                      "dont forget it please",
+                                      new Date().withoutTime(),
+                                      false,false)];
         
         this.doneList = [];
-        this.editIcon = "edit.png";
+        
         
         /*
             Add completed task back to todo list.
@@ -22,17 +30,6 @@
             this.addItem(item);
         }
         
-        /*
-            Edit a todo item.
-        */
-        this.editItem = function(index, item){
-            
-            
-            item.editMode = !item.editMode;  
-            this.editIcon = this.editIcon === "save.png" ? "edit.png" : "save.png";
-            
-            
-        }
         
         /*
             Add item in todo list
@@ -40,7 +37,7 @@
         this.addItem = function(item){
             
             if(!item){
-                item = new TodoItem($scope.title, $scope.description, $scope.date, false);
+                item = new TodoItem($scope.title, $scope.description, $scope.date, false,false);
             }
             
             if(item.date){
@@ -122,7 +119,7 @@
         */
         this.markComplete = function(index, item){
             if(item.isCompleted){
-                this.doneList.push(item);
+                this.doneList.unshift(item);
                 item.isCompleted = false;
                 this.deleteItem(index, item);
                 item.isCompleted = true;
@@ -137,10 +134,12 @@
         
         function removeItem (list,todoItem)
         {
+            console.log(list.length);
             if(list.length > 0){
                 var ss = $filter('filter')(list, todoItem); 
                 if(ss.length > 0){
-                    list.splice(list.indexOf(ss[0],1));
+                    list.splice(list.indexOf(ss[0]),1);
+                    console.log(list.length);
                 }
             }
             

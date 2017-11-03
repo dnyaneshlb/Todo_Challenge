@@ -2,9 +2,9 @@
     <html ng-app="Todo">
         <head>
 		<title>Hello World</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" >
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="css/app.css"/>
 		<script type="text/javascript" src="angular.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
@@ -13,11 +13,23 @@
         
 	</head>
 	<body ng-controller="todoController as todo">
+        <h2 class="app-title">Todo Application</h2>
         <div class="content">
-            <input type="text" placeholder="what's on your todo list?" class="form-control" ng-model="title">
-            <input type="text" placeholder="add more details...." class="form-control" ng-model="description">
-            <input type="date" ng-model="date">
-            <input type="button" value="Add" ng-click="todo.addItem(event)" class="btn btn-primary">
+            <input type="text" placeholder="what's on your todo list?" class="form-control" ng-model="title"
+                   required>
+            <input type="text" placeholder="add more details...." class="form-control" ng-model="description"
+                   required>
+            <div class="col-md-12 text-center"> 
+                <input type="date" ng-model="date"
+                   required>
+            </div>     
+            <br>
+            <div class="col-md-12 text-center"> 
+                <input type="button" value="Add Todo" ng-click="todo.addItem(event)" 
+                       class="btn btn-warning" id="addButton"
+                       ng-disabled="!title || !description || !date"
+                       title="Fill in title and description to add todo in list.">
+            </div>
             
 
             <div ng-show="todo.todoSortedTodoList.todayItems.length>0">
@@ -62,7 +74,7 @@
 
             <div ng-show="todo.todoSortedTodoList.laterThisYearItems.length ==0 && todo.todoSortedTodoList.todayItems.length ==0"
                  class="empty-todo-list">
-                <h4>Alas...!! Nothing on your list?</h4>
+                <h4 id="emptyListLabel">Alas...!! Nothing on your list?</h4>
             </div>
 
             <div ng-show="todo.doneList.length>0">
@@ -73,9 +85,6 @@
                 </div>
             </div>
         </div>
-        
-        
-        
         
 	</body>
 </html>

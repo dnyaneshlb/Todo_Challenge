@@ -6,20 +6,70 @@ img {
     cursor: pointer;
 }
 
+input {
+    margin-bottom: 5px;
+}
+
+input:hover {
+    
+}
+
+input[type=date]{
+    border : 1px solid green;
+    border-radius: 4px;
+}
+
+.form-control {
+    border : 1px solid green;
+}
+
+.form-control:focus {
+    border : 2px solid #4FE44F;
+}
+
+
+.card {
+    margin: 5px 0px 0px 0px;
+}
+
+.card:hover {
+    border-color: aquamarine;
+    border-width: 2px;
+}
+
+.todo-item:hover {
+    background-color: coral;
+}
+
+.app-title {
+    color: #D2A7A7;
+    text-align: center;
+}
+
+.odd-todo-item {
+    background-color: #E496A6;
+    color: aliceblue;
+}
+
+
+.even-todo-item {
+    background-color: #92D697;;
+    color: aliceblue;
+}
+
 .content {
     max-width: 500px;
     margin: auto;
-    background: white;
+    background: linear-gradient(to bottom, #3366ff 0%, #66ffff 100%);
     padding: 10px;
     border-radius: 5px;
+    border: 1px solid #1F3837;
 }
 
 .todo-section-heading {
     font-size: 20px;
-}
-
-.thingtodo{
-
+    text-align: center;
+    color:azure;
 }
 
 .trashcan{
@@ -33,12 +83,12 @@ img {
 }
 
 input.ng-invalid {
-    background-color: pink;
+    background-color: #F3F1FD;
 }
 
 
 input.ng-valid {
-    background-color: lightgreen;
+    background-color: #CEF7CE;
 }
 
 .closebtn {
@@ -49,10 +99,10 @@ input.ng-valid {
 }
 
 .empty-todo-list {
-    color : coral;
+    color : darkorange;
     font-size: 200%;   
     vertical-align: middle;
-    margin-left: 30%;
+    text-align: center;
 }
 
 .completed-item {
@@ -62,4 +112,14 @@ input.ng-valid {
 
 .item-edit {
     margin: 20px 10px 10px 10px;
+}
+
+#addButton{
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+#addButton:hover:enabled{
+    color:white;
+    background-color: aqua;
 }

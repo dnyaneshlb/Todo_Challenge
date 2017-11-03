@@ -1,22 +1,26 @@
 
 <div class="card">
     <div class="closebtn">
-        <input type="checkbox" ng-change="todo.markComplete($index, item)" ng-model="item.isCompleted">
-        <img id="editItem" class="editItem" ng-src="../Todo/res/{{todo.editIcon}}" style="width:20px;height: 20px" 
-             ng-click="todo.editItem($index,item)" title="edit item">
+        <img id="editItem" class="editItem" ng-src="../Todo/res/{{editIcon}}" style="width:20px;height: 20px" 
+             ng-click="editItem()" title="edit item">
+        <input type="checkbox" ng-change="todo.markComplete($index, item)" ng-model="item.isCompleted"
+               ng-hide="todo.editMode">
         <img ng-src="../Todo/res/trash.png" style="width:20px;height: 20px" ng-click="todo.deleteItem($index, item)"
              title="delete item">
     </div>
-    <div class="card-body" ng-hide="item.editMode === true">
-        <h6 class="card-title">{{item.title}}
-
+    <div class="card-body" ng-hide="editMode">
+        <h6 class="card-title">
+            {{item.title}}
+            <p style="display: inline; font-size: 70%; ">&nbsp;&nbsp;due on {{item.date.toDateString()}}</p>
         </h6>
+        
         <p class="card-text">{{item.description}}</p>
     </div>
     
-    <div class="item-edit" ng-show="item.editMode === true">
+    <div class="item-edit" ng-show="editMode">
         <input type="text" placeholder="what's on your todo list?" class="form-control" 
                ng-model="item.title">
         <input type="text" placeholder="add more details...." class="form-control" ng-model="item.description">
+        <input type="date" ng-model="item.date">
     </div>
 </div>
